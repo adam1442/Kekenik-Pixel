@@ -1,7 +1,7 @@
 # Releasing Kekenik Pixel
 
-The whole release is driven by **one git tag**. Everything else (four installers, four macOS
-artifacts, three Linux packages, checksums and the GitHub Release) is produced by
+The whole release is driven by **one git tag**. Everything else (two Windows packages, four macOS
+artifacts, three Linux packages, a web bundle, checksums and the GitHub Release) is produced by
 `.github/workflows/release.yml`.
 
 ---
@@ -22,8 +22,16 @@ artifacts, three Linux packages, checksums and the GitHub Release) is produced b
 
 ```bash
 git checkout main && git pull
-npm version patch            # or minor / major — bumps package.json + creates a vX.Y.Z tag
-git push --follow-tags       # triggers .github/workflows/release.yml
+npm ci
+npm version patch --no-git-tag-version  # or minor / major; bumps package.json + package-lock.json
+npm run generate:icons                  # regenerates versioned assets
+npm run typecheck && npm test
+git add package.json package-lock.json assets/icon installer-assets
+git commit -m "Release new version"
+VERSION=$(node -p "require('./package.json').version")
+git tag "v$VERSION"
+git push origin main
+git push origin "v$VERSION"             # triggers release.yml
 ```
 
 The workflow then:
@@ -32,7 +40,7 @@ The workflow then:
 |---|---|---|
 | `verify` | `ubuntu-latest` | typecheck + tests + web bundle (gate for everything else) |
 | `build` (Windows x64) | `windows-latest` | `-win-x64-setup.exe`, `-win-x64-portable.exe` |
-| `build` (macOS) | `macos-14` | `-mac-x64.dmg/.zip`, `-mac-arm64.dmg/.zip` |
+| `build` (macOS) | `macos-15` (ARM runner) | `-mac-x64.dmg/.zip`, `-mac-arm64.dmg/.zip` |
 | `build` (Linux x64) | `ubuntu-22.04` | `.AppImage`, `.deb`, `.tar.gz` |
 | `release` | `ubuntu-latest` | combined `SHA256SUMS.txt` + GitHub Release with every file attached |
 
@@ -41,8 +49,16 @@ Version numbers are read from `package.json`, so the tag (`v1.2.3`) and the arti
 
 ### Manual / dry run
 
-* **Actions → Release → Run workflow** builds everything and creates a **draft** release by
-  default (untick *draft* to publish immediately).
+* **Actions → Release → Run workflow** builds the selected branch or tag and creates a **draft**
+  release by default (untick *draft* to publish immediately). If the version tag already exists,
+  it must point to the selected commit; otherwise bump the version. If it does not exist, the
+  workflow creates `v<package.json version>` at the selected commit. The workflow must exist on
+  the repository's default branch before the Run workflow button is available.
+* A pushed tag must exactly match `v` followed by the package version. Use a new tag for fixes:
+  rerunning an older tag uses the workflow and source saved at that tag.
+* The publication job verifies all ten expected files before creating or updating a release. If a
+  build fails, review that job's log; its successful build artifacts remain downloadable under
+  the workflow run for the retention period.
 * To build locally first, see [`BUILD.md`](BUILD.md) — `npm run dist:win`, `dist:mac`,
   `dist:linux`.
 
@@ -69,7 +85,9 @@ tests:
 
 ## 4. Code signing (optional, recommended for public releases)
 
-Signing is configured **only through repository secrets** — no code changes are needed.
+The workflow currently produces **unsigned** builds. To enable signing, explicitly map the
+relevant repository secrets into the build step environment and configure electron-builder;
+secrets are not passed to the build automatically.
 
 ### Windows (Authenticode)
 
@@ -89,8 +107,8 @@ SHA-1 subject, also set `windows.signtoolOptions.publisherName` in `package.json
 | `CSC_KEY_PASSWORD` | Password for the `.p12` |
 | `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` | Notarization credentials |
 
-Remove `CSC_IDENTITY_AUTO_DISCOVERY: "false"` from the workflow env once real certificates are
-provided, and add a `notarize` block under `build.mac` in `package.json`.
+Pass the certificate and notarization secrets to the macOS build step, enable certificate
+auto-discovery as appropriate, and configure notarization in electron-builder.
 
 > Unsigned builds are perfectly usable, but Windows SmartScreen and macOS Gatekeeper will show a
 > warning on first launch.

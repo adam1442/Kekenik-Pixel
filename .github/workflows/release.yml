@@ -48,8 +48,25 @@ jobs:
     name: Verify (typecheck · tests · web bundle)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout (including tags)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify release tag matches package version and commit
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          EXPECTED="v${VERSION}"
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "$EXPECTED" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $EXPECTED"; exit 1
+          fi
+          if git rev-parse --verify --quiet "refs/tags/$EXPECTED^{commit}" >/dev/null; then
+            TAG_COMMIT=$(git rev-parse "refs/tags/$EXPECTED^{commit}")
+            if [[ "$TAG_COMMIT" != "$GITHUB_SHA" ]]; then
+              echo "::error::Tag $EXPECTED already points to a different commit. Bump the version and create a new tag."; exit 1
+            fi
+          fi
 
       - name: Setup Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
@@ -70,7 +87,19 @@ jobs:
         run: npm run test
 
       - name: Web production bundle + verification
-        run: npm run build:web
+        run: |
+          npm run build:web
+          VERSION=$(node -p "require('./package.json').version")
+          mkdir -p web-artifact
+          cp dist/index.html "web-artifact/KekenikPixel-${VERSION}-web-bundle.html"
+
+      - name: Upload web release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kekenik-pixel-web-release
+          path: web-artifact/*
+          if-no-files-found: error
+          retention-days: 14
 
   # ---------------------------------------------------------------------------
   # 2. Platform builds (native runners only – no wine, no cross-compiling)
@@ -92,7 +121,7 @@ jobs:
               release/*/KekenikPixel-*-win-*.exe.sha256
               release/*/SHA256SUMS.txt
           - name: macOS (x64 + arm64)
-            os: macos-14
+            os: macos-15
             command: npm run dist:mac
             artifact: macos
             files: |
@@ -172,43 +201,53 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download all build artifacts
+      - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
+          pattern: kekenik-pixel-*
           path: artifacts
-          merge-multiple: true
 
-      - name: Compute combined SHA256SUMS.txt
-        working-directory: artifacts
-        run: |
-          rm -f SHA256SUMS.txt
-          find . -maxdepth 1 -type f \
-            ! -name "*.sha256" \
-            ! -name "SHA256SUMS.txt" \
-            ! -name "*.blockmap" \
-            ! -name "*.yml" \
-            -printf '%P\n' | sort | xargs -r sha256sum > SHA256SUMS.txt
-          echo "--- SHA256SUMS.txt ---"
-          cat SHA256SUMS.txt
-          echo "--- files ---"
-          ls -lah
-
-      - name: Determine version
+      - name: Assemble and verify complete release
         id: version
+        shell: bash
         run: |
+          set -euo pipefail
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
-          fi
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+          mkdir -p release-assets
+          while IFS= read -r -d '' file; do
+            name=$(basename "$file")
+            case "$name" in
+              *.sha256|SHA256SUMS.txt|*.blockmap|*.yml|*.yaml) continue ;;
+            esac
+            if [[ -e "release-assets/$name" ]]; then
+              echo "::error::Duplicate artifact $name"; exit 1
+            fi
+            cp "$file" "release-assets/$name"
+          done < <(find artifacts -type f -print0)
+          for suffix in \
+            win-x64-setup.exe win-x64-portable.exe \
+            mac-x64.dmg mac-x64.zip mac-arm64.dmg mac-arm64.zip \
+            linux-x64.AppImage linux-x64.deb linux-x64.tar.gz web-bundle.html; do
+            name="KekenikPixel-${VERSION}-${suffix}"
+            if [[ ! -s "release-assets/$name" ]]; then
+              echo "::error::Required artifact missing or empty: $name"; exit 1
+            fi
+          done
+          cd release-assets
+          for f in KekenikPixel-*; do sha256sum "$f" > "$f.sha256"; done
+          sha256sum KekenikPixel-* > /tmp/kpx-all-sha
+          grep -v '\.sha256$' /tmp/kpx-all-sha > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          ls -lah
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
           name: Kekenik Pixel ${{ steps.version.outputs.version }}
+          target_commitish: ${{ github.sha }}
           draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft || false }}
           prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease || false }}
           generate_release_notes: true
@@ -224,6 +263,7 @@ jobs:
             | macOS (Apple Silicon) | `KekenikPixel-${{ steps.version.outputs.version }}-mac-arm64.dmg` |
             | macOS (Intel) | `KekenikPixel-${{ steps.version.outputs.version }}-mac-x64.dmg` |
             | Linux (x64) | `...-linux-x64.AppImage` · `.deb` · `.tar.gz` |
+            | Web | `KekenikPixel-${{ steps.version.outputs.version }}-web-bundle.html` |
 
             **Verify your download** against `SHA256SUMS.txt`:
 
@@ -237,4 +277,4 @@ jobs:
             > right-click → *Open*, or run
             > `xattr -dr com.apple.quarantine "/Applications/Kekenik Pixel.app"`.
           files: |
-            artifacts/**/*
+            release-assets/*

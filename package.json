@@ -1,7 +1,7 @@
 {
   "name": "kekenik-pixel",
   "productName": "Kekenik Pixel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Kekenik Pixel — Commercial-Grade Pixel-Art and Sprite-Animation Editor",
@@ -58,7 +58,8 @@
     "dist:linux": "node scripts/build.mjs --linux",
     "dist:linux:docker": "node scripts/build.mjs --linux-docker",
     "dist:all": "node scripts/build.mjs --all",
-    "dist:web": "node scripts/build.mjs --web"
+    "dist:web": "node scripts/build.mjs --web",
+    "pretest": "npm run generate:icons"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.4",

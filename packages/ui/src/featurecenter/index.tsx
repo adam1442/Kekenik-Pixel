@@ -35,7 +35,7 @@ import {
   ScriptCustomDialog,
   ScriptPermissionDialog,
 } from "../panels/scripts/index.tsx";
-import { KekenikAppIcon, PixelIcon } from "../skin/index.tsx";
+import { KekenikAppIcon, KEKENIK_APP_VERSION, PixelIcon } from "../skin/index.tsx";
 import {
   ColorInputField,
   NumberField,
@@ -1505,7 +1505,7 @@ export const AboutDialog: React.FC<{ onClose: () => void }> = ({ onClose }) => (
       <div className="flex items-center gap-3 pb-1 border-b border-black/20">
         <KekenikAppIcon size={32} dataTestId="about-app-icon" />
         <div className="font-bold text-sm">
-          Kekenik Pixel v1.0.0 — Desktop &amp; Web Sprite Studio
+          Kekenik Pixel v{KEKENIK_APP_VERSION} — Desktop &amp; Web Sprite Studio
         </div>
       </div>
       <p>

@@ -5,8 +5,9 @@
  */
 
 import React from "react";
+import { version as packageVersion } from "../../../../package.json";
 
-export const KEKENIK_APP_VERSION = "1.0.0";
+export const KEKENIK_APP_VERSION = packageVersion;
 
 const PALETTE_HEX: Record<string, string> = {
   B: "#1c1624", // Outer dark plum-ink silhouette border
