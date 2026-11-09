@@ -1,93 +1,93 @@
 {
   "productName": "Kekenik Pixel",
   "appId": "com.kekenik.pixel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "generatedAt": "deterministic",
   "files": [
     {
       "path": "assets/icon/app.svg",
       "bytes": 14000,
-      "sha256": "68b68457d3a7dc846fb6419f4bfcd82d11c215251b791d67c8765f576da0ab9e"
+      "sha256": "e6bd31df06c703e418e14ab669ba658d9554ff88c3ad6141078677077a60a4b1"
     },
     {
       "path": "assets/icon/png/16x16.png",
       "bytes": 286,
-      "sha256": "4fafcca2887f4cb0035cb6ca09cf3b69c8c6140293ea6403b6caa79b2dc59412"
+      "sha256": "c0fd4008d0eab74bf79ea44f68d41ff53d02180264cfc4ea5eb1acd706032c6e"
     },
     {
       "path": "assets/icon/png/24x24.png",
       "bytes": 322,
-      "sha256": "a9a81287d1f8c4f35ce2d2564f45469aef1a8231d93de132dafd4313ab501854"
+      "sha256": "d8fd69cca67b2f27cbd7b6a7fc023150bd63b17213314ec9f9506c6898cc813f"
     },
     {
       "path": "assets/icon/png/32x32.png",
       "bytes": 327,
-      "sha256": "7638efeac8423695277583b47f6753841ad774f75ccd143a481aba7a5a3f5fac"
+      "sha256": "8a97bee2c8c89697d318ccc0278533ef8a1762722dd476e4019a2445cb0f7430"
     },
     {
       "path": "assets/icon/png/48x48.png",
       "bytes": 363,
-      "sha256": "9967e8c30a672a5192b9677a9fe93c4f5ab89f75b9201515d167ea33bcea512b"
+      "sha256": "747b2477cfa3412c059f9842888203344a15c979e2f4e568725b8e95dcd95262"
     },
     {
       "path": "assets/icon/png/64x64.png",
       "bytes": 401,
-      "sha256": "81e0b3f8973b2b33137d085597cbad5952ec7232625bc91af2427641ccf8bf95"
+      "sha256": "407de74c879874c4a13cc9d296075124e12d943a96f81ad55e4c4864332c79e4"
     },
     {
       "path": "assets/icon/png/128x128.png",
       "bytes": 631,
-      "sha256": "04ef596d46bc8113ad77b056cba462a7fbd30d98692f8d6b9c416f80dbf83953"
+      "sha256": "593c47fa68a6bf529d515f357fae6bf7e5471116709926e872955802156f6bbe"
     },
     {
       "path": "assets/icon/png/256x256.png",
       "bytes": 1498,
-      "sha256": "e298bb1493aaa8fe84a02bc4f6a40467a568a2ce32c77ff07d2e97fc10efecac"
+      "sha256": "46c5e5a361d1821bd4932a0d166ec94620a58ab55346ce6963533d4001247bb2"
     },
     {
       "path": "assets/icon/png/512x512.png",
       "bytes": 5081,
-      "sha256": "265d2cb8426ceda64f71ba835666c311b810aff4cf72e498ad023af3036993d9"
+      "sha256": "4de63a42a6b86221249d108356caec5102f95ecae7b1ca7ecad15a19e2b4288c"
     },
     {
       "path": "assets/icon/png/1024x1024.png",
       "bytes": 18094,
-      "sha256": "aa14ba56fcb955802aaf984c4faaf23b09b88e8013782d5177bd173a9cfd8295"
+      "sha256": "d9276c06dde346ec74752f76dbd6b32047799f64425e01455bcdc6076f06e3f7"
     },
     {
       "path": "assets/icon/icon.png",
       "bytes": 5081,
-      "sha256": "265d2cb8426ceda64f71ba835666c311b810aff4cf72e498ad023af3036993d9"
+      "sha256": "4de63a42a6b86221249d108356caec5102f95ecae7b1ca7ecad15a19e2b4288c"
     },
     {
       "path": "assets/icon/tray-16.png",
       "bytes": 286,
-      "sha256": "4fafcca2887f4cb0035cb6ca09cf3b69c8c6140293ea6403b6caa79b2dc59412"
+      "sha256": "c0fd4008d0eab74bf79ea44f68d41ff53d02180264cfc4ea5eb1acd706032c6e"
     },
     {
       "path": "assets/icon/tray-24.png",
       "bytes": 322,
-      "sha256": "a9a81287d1f8c4f35ce2d2564f45469aef1a8231d93de132dafd4313ab501854"
+      "sha256": "d8fd69cca67b2f27cbd7b6a7fc023150bd63b17213314ec9f9506c6898cc813f"
     },
     {
       "path": "assets/icon/tray-32.png",
       "bytes": 327,
-      "sha256": "7638efeac8423695277583b47f6753841ad774f75ccd143a481aba7a5a3f5fac"
+      "sha256": "8a97bee2c8c89697d318ccc0278533ef8a1762722dd476e4019a2445cb0f7430"
     },
     {
       "path": "assets/icon/taskbar-32.png",
       "bytes": 327,
-      "sha256": "7638efeac8423695277583b47f6753841ad774f75ccd143a481aba7a5a3f5fac"
+      "sha256": "8a97bee2c8c89697d318ccc0278533ef8a1762722dd476e4019a2445cb0f7430"
     },
     {
       "path": "assets/icon/icon.ico",
       "bytes": 3946,
-      "sha256": "77b135ea74fb1fa3074197601cbfaae211e373031a10507531e92946c4b8519e"
+      "sha256": "a4b0844a0a47826ac239057929181f089d36b729386e454a7cd6f57650c71bd2"
     },
     {
       "path": "assets/icon/icon.icns",
       "bytes": 26382,
-      "sha256": "95c17b7a69d9265cd4596f0cde1846bb3647632e13ce5078d257eb608a337767"
+      "sha256": "60edb944cbda70be0fe86329939d67aa293334abce76f44ae6176932888f42fa"
     },
     {
       "path": "assets/icon/installer-header.bmp",
@@ -112,62 +112,62 @@
     {
       "path": "assets/icon/file-kpx-16.svg",
       "bytes": 11750,
-      "sha256": "f21845eba1a61ef61719f3183bac3705126c718607b2fa657411953d338bc3db"
+      "sha256": "25a5492c2c5ed1c67126429eecf65468ade067d3b0c5fb6c60fab211276ee651"
     },
     {
       "path": "assets/icon/file-kpx.svg",
       "bytes": 11750,
-      "sha256": "f21845eba1a61ef61719f3183bac3705126c718607b2fa657411953d338bc3db"
+      "sha256": "25a5492c2c5ed1c67126429eecf65468ade067d3b0c5fb6c60fab211276ee651"
     },
     {
       "path": "assets/icon/file-kpx-32.svg",
       "bytes": 11748,
-      "sha256": "1ca975ca5c85f7c6c95a02ae6dacc85bc28a7337a9f8324ab9597c21ac6323be"
+      "sha256": "c240cbbf4fdd70acff43240669733a398b6ae3d2c5a977daed0aebc1cfc81e10"
     },
     {
       "path": "assets/icon/file-kpx-16.png",
       "bytes": 230,
-      "sha256": "66021bfbed4ffa9c9bf0a018dbd2d89ee66f246d8bc06e995fa9e7dd60bb32d0"
+      "sha256": "4a65265c109e8a44ceddd86dfb8574cfc7f668c3d6e301f2af8916e697a2dfc4"
     },
     {
       "path": "assets/icon/file-kpx-24.png",
       "bytes": 246,
-      "sha256": "045d01b5ab6199a9db223d413395aaf0b66bcae7528d741df35d042a1fe62aa4"
+      "sha256": "a419d87202901a16bdb8cd489ae262f0c3cab343d5da90fe9dbbbe936e7e81ad"
     },
     {
       "path": "assets/icon/file-kpx-32.png",
       "bytes": 356,
-      "sha256": "e31b1fcfc4279b36256030b6770082e6fa5b79bde6c5f0dbe02debc5f9dca42c"
+      "sha256": "e9ba45fc17380de06b25f9fc85da0d349e08bf664d4bf24d8452491a19890164"
     },
     {
       "path": "assets/icon/file-kpx-48.png",
       "bytes": 424,
-      "sha256": "6304500a127d92eaa1ed47f980a3147aee7509c8d0d4ffdf8763adcf336cb807"
+      "sha256": "64b451924994f3375d4027eb1ca0bf742e914b6d5615171fb92e7f4e5ebea55e"
     },
     {
       "path": "assets/icon/file-kpx-64.png",
       "bytes": 463,
-      "sha256": "27e5e4bb5f8d281bc2b5a3443edf6e85502c6ddb4697bb8a722fa5f7c2952258"
+      "sha256": "d67e351852a16bed5f3325c573cb22597c61d6c8e9f72009af01f18475643f20"
     },
     {
       "path": "assets/icon/file-kpx-128.png",
       "bytes": 672,
-      "sha256": "5de1fd0f12fa60080b5ef69ddb2d655a4f7acdf9451c303b3b46179733a4844c"
+      "sha256": "72b6878b2822c7cb145ad9306fe4e759ea0a113a655875d19e5e6fcb1b400c22"
     },
     {
       "path": "assets/icon/file-kpx-256.png",
       "bytes": 1556,
-      "sha256": "dc64d2b82a1d5c66dc19c3d33e824de3877b3a5a9c1bfbb9b09b8a771d53263f"
+      "sha256": "caa49a0e8f2bf4d3cc755f8a59ddb9c7bbc2aebef0a25ef8704ff6ef6a014053"
     },
     {
       "path": "assets/icon/file-kpx.ico",
       "bytes": 4065,
-      "sha256": "156cc10ddcf073f1aaee55103a3b9eb92d1e4811876b52330b995d7a888554b7"
+      "sha256": "33c14d89fe0ab5fb52e6cc797661319c2feb336c389f0446c4f442dd558f50a6"
     },
     {
       "path": "assets/icon/file-kpx.icns",
       "bytes": 24530,
-      "sha256": "04ad5ce7ec9b4881386a5a8a20dcc8c94c71c9725a43edeefadb23174b4e60e5"
+      "sha256": "304fb9f4bbce9db65ae6ed3ccebbf8dab6d340589087efe9058c3bd3b56956e0"
     }
   ]
 }
