@@ -163,6 +163,11 @@
       "path": "assets/icon/file-kpx.ico",
       "bytes": 4065,
       "sha256": "156cc10ddcf073f1aaee55103a3b9eb92d1e4811876b52330b995d7a888554b7"
+    },
+    {
+      "path": "assets/icon/file-kpx.icns",
+      "bytes": 24530,
+      "sha256": "04ad5ce7ec9b4881386a5a8a20dcc8c94c71c9725a43edeefadb23174b4e60e5"
     }
   ]
 }

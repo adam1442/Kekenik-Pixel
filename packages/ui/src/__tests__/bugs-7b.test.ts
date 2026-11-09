@@ -321,6 +321,29 @@ describe("Agent 7B Regression & Verification Suite (B12, B13, B16, B17)", () => 
     expect(kpxIco.readUInt16LE(2)).toBe(1);
     expect(kpxIco.readUInt16LE(4)).toBe(7);
 
+    // macOS derives the .icns path from the file-association .ico basename.
+    const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+    const association = pkg.build.fileAssociations.find((item: { ext: string }) => item.ext === "kpx");
+    expect(association.icon).toBe("assets/icon/file-kpx.ico");
+    const icnsPath = path.join(root, association.icon.replace(/\.ico$/i, ".icns"));
+    const kpxIcns = fs.readFileSync(icnsPath);
+    expect(kpxIcns.subarray(0, 4).toString("ascii")).toBe("icns");
+    expect(kpxIcns.readUInt32BE(4)).toBe(kpxIcns.length);
+    const sizes: Record<string, number> = { icp4: 16, icp5: 32, icp6: 64, ic07: 128, ic08: 256, ic09: 512, ic10: 1024 };
+    const found: string[] = [];
+    for (let offset = 8; offset < kpxIcns.length;) {
+      const type = kpxIcns.subarray(offset, offset + 4).toString("ascii");
+      const length = kpxIcns.readUInt32BE(offset + 4);
+      expect(length).toBeGreaterThan(32);
+      expect(offset + length).toBeLessThanOrEqual(kpxIcns.length);
+      expect(kpxIcns.subarray(offset + 8, offset + 16)).toEqual(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      expect(kpxIcns.readUInt32BE(offset + 24)).toBe(sizes[type]);
+      expect(kpxIcns.readUInt32BE(offset + 28)).toBe(sizes[type]);
+      found.push(type);
+      offset += length;
+    }
+    expect(found).toEqual(Object.keys(sizes));
+
     // 2. Portable mode data dir redirect (`PORTABLE_EXECUTABLE_DIR` mocked)
     const portableBase = createTempDir("portable-usb");
     const resolved = resolveDesktopDataDir("/default/appdata", {

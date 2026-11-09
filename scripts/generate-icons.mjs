@@ -15,7 +15,8 @@
  *  - `installer-sidebar.bmp` (164x314 24-bit BMP for NSIS MUI_WELCOMEFINISHPAGE_BITMAP)
  *  - `file-kpx.svg`, `file-kpx-16.svg`, `file-kpx-32.svg` (Dedicated .kpx document icon masters)
  *  - `file-kpx-16.png`, `file-kpx-32.png`, `file-kpx-48.png`, `file-kpx-64.png`, `file-kpx-128.png`, `file-kpx-256.png`
- *  - `file-kpx.ico` (Multi-size Windows document association ICO: 16, 24, 32, 48, 64, 128, 256)
+ *  - `file-kpx.ico` (multi-size Windows document association icon)
+ *  - `file-kpx.icns` (multi-size macOS document association icon)
  *  - `icon-manifest.json` (Version-pinned manifest with SHA-256 hashes)
  */
 
@@ -592,6 +593,13 @@ export function generateAllIcons(rootDir = ROOT_DIR) {
   }
   const kpxIco = encodeMultiSizeIco(icoSizes.map((sz) => ({ size: sz, png: kpxPngBySize[sz] })));
   writeAndTrack("assets/icon/file-kpx.ico", kpxIco);
+
+  // electron-builder resolves the file association's .ico path to the same basename with
+  // .icns on macOS. Supply a real ICNS with Retina sizes, not a copy of the app icon.
+  for (const sz of [512, 1024]) {
+    kpxPngBySize[sz] = encodeRgbaToPngBuffer(sz, sz, renderKpxDocPixels(sz), version);
+  }
+  writeAndTrack("assets/icon/file-kpx.icns", encodeIcnsContainer(kpxPngBySize));
 
   // 8. Version-pinned manifest
   const manifest = {
