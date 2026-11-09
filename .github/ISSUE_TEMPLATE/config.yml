@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Build & packaging guide
+    url: https://github.com/adam1442/Kekenik-Pixel/blob/main/docs/BUILD.md
+    about: How to build installers locally and how releases are produced.
+  - name: Questions & discussions
+    url: https://github.com/adam1442/Kekenik-Pixel/discussions
+    about: Ask questions about usage, pixel-art workflows or contributions.

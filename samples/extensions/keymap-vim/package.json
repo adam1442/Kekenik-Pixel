@@ -1,0 +1,20 @@
+{
+  "id": "kekenik.keymap-vim",
+  "name": "Vim Modal Navigation Keymap",
+  "version": "1.0.0",
+  "author": "Kekenik Studio",
+  "description": "Adds H/J/K/L style frame/layer navigation and quick script execution keybindings.",
+  "engines": {
+    "kekenikPixel": ">=1.0.0"
+  },
+  "permissions": [],
+  "contributes": {
+    "keymaps": [
+      {
+        "id": "vim-pixel-keymap",
+        "name": "Vim Pixel Keybindings",
+        "path": "vim-keymap.json"
+      }
+    ]
+  }
+}

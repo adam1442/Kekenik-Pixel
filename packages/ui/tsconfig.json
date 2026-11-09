@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@kekenik/core": ["../core/src/index.ts"],
+      "@kekenik/core/*": ["../core/src/*"]
+    }
+  },
+  "include": ["src"]
+}

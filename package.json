@@ -1,0 +1,224 @@
+{
+  "name": "kekenik-pixel",
+  "productName": "Kekenik Pixel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Kekenik Pixel — Commercial-Grade Pixel-Art and Sprite-Animation Editor",
+  "author": {
+    "name": "adam1442",
+    "email": "hossein.r.1442@gmail.com"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "homepage": "https://github.com/adam1442/Kekenik-Pixel#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adam1442/Kekenik-Pixel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adam1442/Kekenik-Pixel/issues"
+  },
+  "keywords": [
+    "pixel-art",
+    "sprite",
+    "animation",
+    "aseprite",
+    "editor",
+    "electron",
+    "canvas",
+    "game-development"
+  ],
+  "main": "dist-electron/main.mjs",
+  "desktopName": "kekenik-pixel.desktop",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:web": "vite",
+    "dev:desktop": "node apps/desktop/scripts/dev-desktop.mjs",
+    "build": "npm run build:web",
+    "build:web": "vite build && node scripts/verify-release-bundle.mjs --sanitize-dist dist",
+    "build:electron": "node scripts/build-desktop.mjs --electron",
+    "build:renderer:desktop": "node scripts/build-desktop.mjs --renderer",
+    "build:desktop": "node scripts/build-desktop.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p apps/desktop/tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:all": "npm run typecheck && npm run test && npm run generate:icons",
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "verify:release": "node scripts/verify-release-bundle.mjs dist",
+    "clean": "node scripts/clean.mjs",
+    "dist:dir": "node scripts/build.mjs --dir",
+    "dist:win": "node scripts/build.mjs --win",
+    "dist:win:portable": "node scripts/build.mjs --win-portable",
+    "dist:win:qa": "node scripts/build.mjs --win-qa",
+    "dist:mac": "node scripts/build.mjs --mac",
+    "dist:linux": "node scripts/build.mjs --linux",
+    "dist:linux:docker": "node scripts/build.mjs --linux-docker",
+    "dist:all": "node scripts/build.mjs --all",
+    "dist:web": "node scripts/build.mjs --web"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.20.4",
+    "@codemirror/commands": "^6.11.1",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.15",
+    "clsx": "^2.1.1",
+    "codemirror": "^6.0.2",
+    "fflate": "^0.8.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@types/node": "^22.19.17",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "tailwindcss": "4.1.17",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.8",
+    "vite-plugin-singlefile": "^2.3.4",
+    "vitest": "^4.1.12"
+  },
+  "build": {
+    "appId": "com.kekenik.pixel",
+    "productName": "Kekenik Pixel",
+    "copyright": "Copyright © 2026 Kekenik Studio",
+    "asar": true,
+    "publish": null,
+    "compression": "normal",
+    "directories": {
+      "output": "release/${version}",
+      "buildResources": "installer-assets"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "assets/icon/**/*",
+      "LICENSE.txt",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/icon/file-kpx.ico",
+        "to": "file-kpx.ico"
+      }
+    ],
+    "fileAssociations": [
+      {
+        "ext": "kpx",
+        "name": "Kekenik Pixel Project",
+        "description": "Kekenik Pixel Project",
+        "icon": "assets/icon/file-kpx.ico",
+        "role": "Editor"
+      }
+    ],
+    "win": {
+      "icon": "assets/icon/icon.ico",
+      "legalTrademarks": "Kekenik Pixel",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "KekenikPixel-${version}-win-${arch}-setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Kekenik Pixel",
+      "license": "LICENSE.txt",
+      "installerIcon": "assets/icon/icon.ico",
+      "uninstallerIcon": "assets/icon/icon.ico",
+      "installerHeader": "installer-assets/installerHeader.bmp",
+      "installerSidebar": "installer-assets/installerSidebar.bmp",
+      "uninstallerSidebar": "installer-assets/installerSidebar.bmp",
+      "include": "installer-assets/installer.nsh",
+      "artifactName": "KekenikPixel-${version}-win-${arch}-setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "KekenikPixel-${version}-win-${arch}-portable.${ext}"
+    },
+    "mac": {
+      "icon": "assets/icon/icon.icns",
+      "category": "public.app-category.graphics-design",
+      "darkModeSupport": true,
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "artifactName": "KekenikPixel-${version}-mac-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "Kekenik Pixel ${version}",
+      "artifactName": "KekenikPixel-${version}-mac-${arch}.${ext}"
+    },
+    "linux": {
+      "icon": "assets/icon/png",
+      "executableName": "kekenik-pixel",
+      "synopsis": "Commercial-Grade Pixel-Art & Sprite Animation Studio",
+      "syncDesktopName": true,
+      "category": "Graphics",
+      "description": "Kekenik Pixel is a pixel-art and sprite-animation editor for Windows, macOS and Linux.",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "KekenikPixel-${version}-linux-x64.${ext}"
+    }
+  }
+}

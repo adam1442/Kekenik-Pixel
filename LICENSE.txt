@@ -1,0 +1,16 @@
+KEKENIK PIXEL — END-USER SOFTWARE LICENSE AGREEMENT 
+
+Copyright (c) 2026 Kekenik Studio. All rights reserved.
+
+Product: Kekenik Pixel
+Application ID: com.kekenik.pixel
+Version: 1.0.0
+
+1. GRANT OF LICENSE
+Subject to the terms of this Agreement, Kekenik Studio grants you a non-exclusive license to install and use Kekenik Pixel on supported desktop operating systems (Windows, macOS, and Linux).
+
+2. THIRD-PARTY OPEN-SOURCE COMPONENTS
+Kekenik Pixel includes open-source software components licensed under their respective MIT, BSD, ISC, and Apache-2.0 licenses. See `docs/THIRD_PARTY.md` for the complete list of third-party packages and attributions.
+
+3. NO WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.

@@ -1,0 +1,36 @@
+{
+  "id": "cyberpunk-neon",
+  "name": "Cyberpunk Neon (Synthwave)",
+  "windowBg": "#120924",
+  "chromeBg": "#241242",
+  "panelBg": "#1c0f36",
+  "headerBg": "#4c1d95",
+  "headerActiveBg": "#d946ef",
+  "headerText": "#fdf4ff",
+  "canvasSurroundBg": "#090414",
+  "inputBg": "#0f0720",
+  "inputText": "#f0abfc",
+  "textPrimary": "#f5d0fe",
+  "textMuted": "#c084fc",
+  "accentBg": "#06b6d4",
+  "accentText": "#082f49",
+  "borderOuter": "#05020a",
+  "bevelLight": "#7e22ce",
+  "bevelDark": "#090414",
+  "buttonBg": "#3b0764",
+  "buttonActiveBg": "#d946ef",
+  "tabActiveBg": "#701a75",
+  "tabInactiveBg": "#2e1065",
+  "timelineRowBg": "#1e1b4b",
+  "timelineRowAltBg": "#17153b",
+  "timelineSelectedBg": "#0891b2",
+  "spacing": {
+    "xs": 2,
+    "sm": 4,
+    "md": 8
+  },
+  "radii": {
+    "none": 0,
+    "sm": 2
+  }
+}

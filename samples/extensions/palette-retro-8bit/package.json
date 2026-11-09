@@ -1,0 +1,20 @@
+{
+  "id": "kekenik.palette-retro-8bit",
+  "name": "Retro 8-Bit Arcade Palette Pack",
+  "version": "1.1.0",
+  "author": "Kekenik Studio",
+  "description": "Adds the 16-color Retro 8-Bit Arcade palette (.gpl) to the Palette Registry.",
+  "engines": {
+    "kekenikPixel": ">=1.0.0"
+  },
+  "permissions": [],
+  "contributes": {
+    "palettes": [
+      {
+        "id": "retro-8bit-arcade",
+        "name": "Retro 8-Bit Arcade (16 Colors)",
+        "path": "retro-8bit.gpl"
+      }
+    ]
+  }
+}

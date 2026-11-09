@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# Kekenik Pixel — line ending & binary normalization
+# ---------------------------------------------------------------------------
+* text=auto eol=lf
+
+# Source
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.cjs   text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.svg   text eol=lf
+*.nsh   text eol=lf
+*.nsi   text eol=lf
+
+# Windows shell scripts must keep CRLF
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# Binary assets — never diff or convert these
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.icns  binary
+*.bmp   binary
+*.woff  binary
+*.woff2 binary
+*.zip   binary
+*.exe   binary
+*.dmg   binary
+*.AppImage binary
+*.deb   binary
+
+# Generated files that should not clutter GitHub diffs / language stats
+package-lock.json linguist-generated=true
+assets/icon/icon-manifest.json linguist-generated=true

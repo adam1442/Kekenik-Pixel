@@ -1,0 +1,20 @@
+{
+  "id": "kekenik.theme-cyberpunk",
+  "name": "Cyberpunk Neon Theme",
+  "version": "1.0.0",
+  "author": "Kekenik Studio",
+  "description": "High-contrast synthwave magenta & cyan pixel-art skin theme.",
+  "engines": {
+    "kekenikPixel": ">=1.0.0"
+  },
+  "permissions": [],
+  "contributes": {
+    "themes": [
+      {
+        "id": "cyberpunk-neon",
+        "name": "Cyberpunk Neon (Synthwave)",
+        "path": "cyberpunk-theme.json"
+      }
+    ]
+  }
+}

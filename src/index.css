@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    image-rendering: pixelated;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    -webkit-font-smoothing: none;
+  }
+}
+
+.kpx-bevel-outset {
+  border-top: 1px solid var(--kpx-bevel-light, #f2ece6);
+  border-left: 1px solid var(--kpx-bevel-light, #f2ece6);
+  border-right: 1px solid var(--kpx-bevel-dark, #5a534e);
+  border-bottom: 1px solid var(--kpx-bevel-dark, #5a534e);
+  outline: 1px solid #141418;
+}
+
+.kpx-bevel-inset {
+  border-top: 1px solid var(--kpx-bevel-dark, #5a534e);
+  border-left: 1px solid var(--kpx-bevel-dark, #5a534e);
+  border-right: 1px solid var(--kpx-bevel-light, #f2ece6);
+  border-bottom: 1px solid var(--kpx-bevel-light, #f2ece6);
+  outline: 1px solid #141418;
+}
+
+.kpx-window {
+  border-top: 2px solid var(--kpx-bevel-light, #f2ece6);
+  border-left: 2px solid var(--kpx-bevel-light, #f2ece6);
+  border-right: 2px solid var(--kpx-bevel-dark, #5a534e);
+  border-bottom: 2px solid var(--kpx-bevel-dark, #5a534e);
+  outline: 1px solid #000000;
+}

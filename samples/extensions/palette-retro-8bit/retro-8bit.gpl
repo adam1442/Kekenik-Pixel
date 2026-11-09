@@ -1,0 +1,20 @@
+GIMP Palette
+Name: Retro 8-Bit Arcade
+Columns: 4
+#
+  0   0   0	Void Black
+ 29  43  83	Arcade Navy
+126  37  83	Cabinet Plum
+  0 135  81	CRT Emerald
+171  82  54	Brick Rust
+ 95  87  79	Ash Slate
+194 195 199	Coin Silver
+255 241 232	Phosphor White
+255   0  77	Laser Red
+255 163   0	Highscore Amber
+255 236  39	Token Gold
+  0 228  54	Slime Neon
+ 41 173 255	Sky Beam
+131 118 156	Dusk Lavender
+255 119 168	Bubblegum Pink
+255 204 170	Arcade Peach

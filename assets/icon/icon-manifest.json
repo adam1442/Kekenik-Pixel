@@ -1,0 +1,168 @@
+{
+  "productName": "Kekenik Pixel",
+  "appId": "com.kekenik.pixel",
+  "version": "1.0.0",
+  "generatedAt": "deterministic",
+  "files": [
+    {
+      "path": "assets/icon/app.svg",
+      "bytes": 14000,
+      "sha256": "0cb95bb12e306a85a412018a44f2194db6826fad7a34f0124ec734a2d5db8468"
+    },
+    {
+      "path": "assets/icon/png/16x16.png",
+      "bytes": 286,
+      "sha256": "de3277d85454d250c902255c8c2b9a290ce6592e5c736f57c49cd56bd138a5de"
+    },
+    {
+      "path": "assets/icon/png/24x24.png",
+      "bytes": 322,
+      "sha256": "e86c987d4f4348ae1a0ba7812d941530871c6bbcff403b49635370e09c5e7be0"
+    },
+    {
+      "path": "assets/icon/png/32x32.png",
+      "bytes": 327,
+      "sha256": "810b1ae53dc8d99de45453f9c32eecedbe7dfdc0454ba06a15c73b83b811e4f8"
+    },
+    {
+      "path": "assets/icon/png/48x48.png",
+      "bytes": 363,
+      "sha256": "b8a81749861a8e5aac8182b5da7bad2f9a2773a208274ded0e0b259b1fb59b30"
+    },
+    {
+      "path": "assets/icon/png/64x64.png",
+      "bytes": 401,
+      "sha256": "99326cb2b1fc5d930efc3e14ff2f118fac5f4f9ec3de2e4d58d259d15f46122e"
+    },
+    {
+      "path": "assets/icon/png/128x128.png",
+      "bytes": 631,
+      "sha256": "6d34a047dd4e860fefb61c04afad551f1e22e2643f3fd355f5e874edb1a92f1c"
+    },
+    {
+      "path": "assets/icon/png/256x256.png",
+      "bytes": 1498,
+      "sha256": "bbd9b324e83fea659cc74e084cee94a926a365aac5d728f276fea608e80d9407"
+    },
+    {
+      "path": "assets/icon/png/512x512.png",
+      "bytes": 5081,
+      "sha256": "19cab99f4aa29ddf332ec586852a7499b8f34c9b88073456530373f69468a59a"
+    },
+    {
+      "path": "assets/icon/png/1024x1024.png",
+      "bytes": 18094,
+      "sha256": "f1c0689f6105f46bdefe5ca3f34005fa4c738359041572dccf13300fbfb2cdd9"
+    },
+    {
+      "path": "assets/icon/icon.png",
+      "bytes": 5081,
+      "sha256": "19cab99f4aa29ddf332ec586852a7499b8f34c9b88073456530373f69468a59a"
+    },
+    {
+      "path": "assets/icon/tray-16.png",
+      "bytes": 286,
+      "sha256": "de3277d85454d250c902255c8c2b9a290ce6592e5c736f57c49cd56bd138a5de"
+    },
+    {
+      "path": "assets/icon/tray-24.png",
+      "bytes": 322,
+      "sha256": "e86c987d4f4348ae1a0ba7812d941530871c6bbcff403b49635370e09c5e7be0"
+    },
+    {
+      "path": "assets/icon/tray-32.png",
+      "bytes": 327,
+      "sha256": "810b1ae53dc8d99de45453f9c32eecedbe7dfdc0454ba06a15c73b83b811e4f8"
+    },
+    {
+      "path": "assets/icon/taskbar-32.png",
+      "bytes": 327,
+      "sha256": "810b1ae53dc8d99de45453f9c32eecedbe7dfdc0454ba06a15c73b83b811e4f8"
+    },
+    {
+      "path": "assets/icon/icon.ico",
+      "bytes": 3946,
+      "sha256": "0c7cf9dc86632268775d512d63d90615aed3e3535b21cb6ea8cad0383e67a98c"
+    },
+    {
+      "path": "assets/icon/icon.icns",
+      "bytes": 26382,
+      "sha256": "d7ff23225541fde30a96f1c54cf73e52171f49b7a468c40adc5d478ffb1fad0f"
+    },
+    {
+      "path": "assets/icon/installer-header.bmp",
+      "bytes": 25818,
+      "sha256": "0e3dde5a1e2efd5adcc2d15c04bc2139ba2dfaf863a5155577ff2f36d680f1f5"
+    },
+    {
+      "path": "assets/icon/installer-sidebar.bmp",
+      "bytes": 154542,
+      "sha256": "fd8a3ff5ce1415c81546e08e44466fd9f9a0f192cf7f8259840da9680943a99e"
+    },
+    {
+      "path": "installer-assets/installerHeader.bmp",
+      "bytes": 25818,
+      "sha256": "0e3dde5a1e2efd5adcc2d15c04bc2139ba2dfaf863a5155577ff2f36d680f1f5"
+    },
+    {
+      "path": "installer-assets/installerSidebar.bmp",
+      "bytes": 154542,
+      "sha256": "fd8a3ff5ce1415c81546e08e44466fd9f9a0f192cf7f8259840da9680943a99e"
+    },
+    {
+      "path": "assets/icon/file-kpx-16.svg",
+      "bytes": 11750,
+      "sha256": "3b2083b36ae8658fc08ecc70ccfb1046b1d36bf09cfe37f3d71302761ffa1ef9"
+    },
+    {
+      "path": "assets/icon/file-kpx.svg",
+      "bytes": 11750,
+      "sha256": "3b2083b36ae8658fc08ecc70ccfb1046b1d36bf09cfe37f3d71302761ffa1ef9"
+    },
+    {
+      "path": "assets/icon/file-kpx-32.svg",
+      "bytes": 11748,
+      "sha256": "9ae4bb5061d0f182e464bb3141fc3b770449937e3d105b4ec19c0deab7b9d16c"
+    },
+    {
+      "path": "assets/icon/file-kpx-16.png",
+      "bytes": 230,
+      "sha256": "dca741661cc6ab8b8884e449c2b87d5d2c64f95ee8e578478e3d283b98c78105"
+    },
+    {
+      "path": "assets/icon/file-kpx-24.png",
+      "bytes": 246,
+      "sha256": "57f6569bd5e01d508db4799190c74060b1d663b2e9ca0f67d827a98e492c4e04"
+    },
+    {
+      "path": "assets/icon/file-kpx-32.png",
+      "bytes": 356,
+      "sha256": "1a8a60468effb4b26107847353a9f5bfae37189bc411e88ad46acb8cbb19d298"
+    },
+    {
+      "path": "assets/icon/file-kpx-48.png",
+      "bytes": 424,
+      "sha256": "8609036fd886764945028b3e504b5ea4716085aa1969b069bcadcf2d9febdc8c"
+    },
+    {
+      "path": "assets/icon/file-kpx-64.png",
+      "bytes": 463,
+      "sha256": "653836ec7bec1f4cca65118a7dc4137bd7303c7bfae521a97597dca344ba751a"
+    },
+    {
+      "path": "assets/icon/file-kpx-128.png",
+      "bytes": 672,
+      "sha256": "d46d6b3d2770f21306c5ef84e4bc2723ebcc3b8e4861ffe3e75145b4c41a532e"
+    },
+    {
+      "path": "assets/icon/file-kpx-256.png",
+      "bytes": 1556,
+      "sha256": "1be5b869f531dbee1337e7dc356181d2f73d75ebe105b5944d074ed6bd6ebe51"
+    },
+    {
+      "path": "assets/icon/file-kpx.ico",
+      "bytes": 4065,
+      "sha256": "cf20121f0b6ab967988a5abe455f543d997cc0bd5ae0d014896b5541cf846b0d"
+    }
+  ]
+}

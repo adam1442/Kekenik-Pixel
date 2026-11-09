@@ -1,0 +1,8 @@
+{
+  "bindings": [
+    { "commandId": "frame.prev", "keys": "Ctrl+H" },
+    { "commandId": "frame.next", "keys": "Ctrl+L" },
+    { "commandId": "script.run_active", "keys": "Ctrl+Enter" },
+    { "commandId": "ext.manage", "keys": "Ctrl+Shift+X" }
+  ]
+}

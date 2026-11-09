@@ -1,0 +1,20 @@
+{
+  "id": "kekenik.lang-fa-improved",
+  "name": "Persian Professional Studio Pack (فارسی حرفه‌ای)",
+  "version": "1.0.0",
+  "author": "Kekenik Community",
+  "description": "Enhanced Persian studio terminology and poetic pixel-art glossary overrides.",
+  "engines": {
+    "kekenikPixel": ">=1.0.0"
+  },
+  "permissions": [],
+  "contributes": {
+    "languages": [
+      {
+        "locale": "fa",
+        "name": "فارسی (نسخه استودیویی پیشرفته)",
+        "path": "fa-improved.json"
+      }
+    ]
+  }
+}

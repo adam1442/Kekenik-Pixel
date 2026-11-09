@@ -1,0 +1,13 @@
+{
+  "name": "@kekenik/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Electron main process, preload bridge and platform adapter for Kekenik Pixel",
+  "type": "module",
+  "main": "dist-electron/main.mjs",
+  "scripts": {
+    "dev": "node scripts/dev-desktop.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "node ../../scripts/build-desktop.mjs --electron"
+  }
+}

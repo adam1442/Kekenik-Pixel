@@ -1,0 +1,137 @@
+name: CI
+
+# Fast feedback on every push / pull request:
+#   1. typecheck, unit & integration tests, web bundle  (Linux)
+#   2. a real Windows packaging smoke test              (Windows, main branch or manual)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  CSC_IDENTITY_AUTO_DISCOVERY: "false"
+  ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+  ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+
+jobs:
+  checks:
+    name: Typecheck · Tests · Web bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate icons (deterministic, committed outputs)
+        run: npm run generate:icons
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit & integration tests
+        run: npm run test
+
+      - name: Web production bundle + release verification
+        run: npm run build:web
+
+      - name: Electron bundles (main · preload · desktop renderer)
+        run: npm run build:desktop
+
+      - name: Upload web bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: kekenik-pixel-web
+          path: dist/index.html
+          retention-days: 7
+
+  package-windows:
+    name: Windows packaging smoke test
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Cache Electron / electron-builder downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache/electron
+            .cache/electron-builder
+          key: ${{ runner.os }}-electron-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-electron-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Windows installer + portable (no publish)
+        run: npm run dist:win -- --skip-tests
+
+      - name: Upload installer artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kekenik-pixel-windows-smoke
+          path: release/*/KekenikPixel-*-win-*.exe
+          if-no-files-found: error
+          retention-days: 7
+
+  package-linux:
+    name: Linux packaging smoke test
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libnss3 libgtk-3-0 libfuse2 fakeroot dpkg
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Linux packages (no publish)
+        run: npm run dist:linux -- --skip-tests
+
+      - name: Upload Linux artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kekenik-pixel-linux-smoke
+          path: |
+            release/*/KekenikPixel-*-linux-x64.AppImage
+            release/*/KekenikPixel-*-linux-x64.deb
+            release/*/KekenikPixel-*-linux-x64.tar.gz
+          if-no-files-found: error
+          retention-days: 7
